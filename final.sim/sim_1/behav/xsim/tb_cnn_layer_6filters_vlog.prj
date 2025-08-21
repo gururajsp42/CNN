@@ -1,0 +1,19 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "D:/xilinx/2025.1/Vivado/data/rsb/busdef" \
+"../../../../final.srcs/sources_1/new/argmax.sv" \
+"../../../../final.srcs/sources_1/new/cnn_layer_6filters.sv" \
+"../../../../final.srcs/sources_1/new/conv2d_1filter_mac_5x5.sv" \
+"../../../../final.srcs/sources_1/new/conv_layer2.sv" \
+"../../../../final.srcs/sources_1/new/fc_400x120_120mac_pipeline.sv" \
+"../../../../final.srcs/sources_1/new/line_buffer_2x2.sv" \
+"../../../../final.srcs/sources_1/new/line_buffer_5x5.sv" \
+"../../../../final.srcs/sources_1/new/maxpool2x2_stride2.sv" \
+"../../../../final.srcs/sources_1/new/maxpool_to_fc_buffer.sv" \
+"../../../../final.srcs/sources_1/new/relu_reg.sv" \
+"../../../../final.srcs/sources_1/new/tb_cnn_layer_6filters.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
