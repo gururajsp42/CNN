@@ -1,0 +1,40 @@
+# -----------------------------------------------------------------------------
+# Vivado / FPGA Project Git Ignore
+# -----------------------------------------------------------------------------
+
+# Project-wide temporary/auto-generated folders
+.cache/
+.hw/
+.ip_user_files/
+.Xil/
+.sim/
+.runs/
+.gen/
+.logs/
+.webtalk/
+
+# Common Vivado-generated files
+*.jou
+*.log
+*.str
+*.zip
+*.dcp
+*.wdb
+*.pb
+*.html
+*.xml
+*.backup*
+*.tmp
+
+# Checkpoint & intermediate synthesis outputs
+*.edf
+*.ncd
+*.ngc
+*.ngd
+*.rpt
+*.bgn
+
+# OS junk
+.DS_Store
+Thumbs.db
+
