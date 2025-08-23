@@ -38,8 +38,8 @@ module cnn_layer_6filters #(
     input  logic signed [7:0]           fc3_weights [10][80],
     input  logic signed [64:0]          fc3_bias[10],
     
-      output logic [3:0] pred_class
-   
+      output logic [3:0] pred_class,
+   output logic signed [64:0]          fc3_outputs [10]
 
     
 );
@@ -77,7 +77,7 @@ module cnn_layer_6filters #(
   
     logic signed [50:0]        fc2_outputs [80];
     
-    logic signed [64:0]          fc3_outputs [10];
+   
     
  
     line_buffer_5x5 #(

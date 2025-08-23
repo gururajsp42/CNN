@@ -29,6 +29,7 @@ module tb_cnn_layer_6filters;
     logic signed [7:0]           fc3_weights [10][80];
     logic signed [64:0]          fc3_bias[10];
     logic [3:0] pred_class;
+    logic signed [64:0]          fc33_outputs [10];
 
     
     cnn_layer_6filters #(
@@ -55,7 +56,8 @@ module tb_cnn_layer_6filters;
         
         .fc3_weights(fc3_weights),
         .fc3_bias(fc3_bias),
-        . pred_class(pred_class)
+        . pred_class(pred_class),
+        .fc3_outputs(fc33_outputs)
        
         
   
@@ -79,7 +81,7 @@ module tb_cnn_layer_6filters;
         // Initialize conv kernels and biases (all 1s and 0s)
         for (i = 0; i < 6; i++) begin
             for (f = 0; f < 25; f++) begin
-                kernels[i][f] = 8'sd1;
+                kernels[i][f] = 8'sd0;
             end
             biases[i] = 16'sd0;
         end
@@ -88,7 +90,7 @@ module tb_cnn_layer_6filters;
         for (i = 0; i <= 15; i = i + 1) begin
             for (j = 0; j <= 5; j = j + 1) begin
                 for (k = 0; k <= 24; k = k + 1) begin
-                    kernel[i][j][k] = 16'sd1;  
+                    kernel[i][j][k] = 16'sd0;  
                 end
             end
             bias[i] = 16'sd0;
@@ -98,7 +100,7 @@ module tb_cnn_layer_6filters;
         for (i = 0; i < 120; i++) begin
             bias_ram[i] = 35'sd0;                 // bias = 0
             for (j = 0; j < 400; j++) begin
-                weight_ram[i][j] = 8'sd1;         // weights = 1
+                weight_ram[i][j] = 8'sd0;         // weights = 1
             end
         end
 
@@ -106,17 +108,23 @@ module tb_cnn_layer_6filters;
         for (i = 0; i < 80; i++) begin
             fc2_bias[i] = 51'sd0;                 // bias = 0
             for (j = 0; j < 120; j++) begin
-                fc2_weights[i][j] = 8'sd1;        // weights = 1
+                fc2_weights[i][j] = 8'sd0;        // weights = 1
             end
         end
 
         // Initialize FC3 (80->10) weight/bias
         for (i = 0; i < 10; i++) begin
-            fc3_bias[i] = 65'sd0;                 // bias = 0
+           
+                        // bias = 0
             for (j = 0; j < 80; j++) begin
-                fc3_weights[i][j] = 8'sd1;        // weights = 1
+                fc3_weights[i][j] = 8'sd0;        // weights = 1
             end
         end
+        
+        for (i = 0; i < 9; i++) begin
+            fc3_bias[i] = 65'sd0; 
+            end
+            fc3_bias[9]=65'sd111;
 
         // Feed a 32x32 test image with 8-bit pixel values
         @(posedge clk);
@@ -127,9 +135,21 @@ module tb_cnn_layer_6filters;
             $display("TX Pixel[%0d] = %0d", i, px_in);
             @(posedge clk);
         end
-        valid_in = 0;
+     // after sending all pixels
+valid_in = 0;
 
-        #10000 $stop;
-    end
+// wait for prediction to become valid
+@(posedge pred_valid);
 
-endmodule
+$display("FC3 outputs:");
+for (int t = 0; t < 10; t++) begin
+  $display("  out[%0d] = %0d", t, fc33_outputs[t]);
+end
+$display("PRED CLASS = %0d", pred_class);
+
+// give a few extra cycles if you want
+repeat (20) @(posedge clk);
+$stop;
+end
+endmodule   
+

@@ -1023,4 +1023,16 @@ TX Pixel[1020] = -4
 TX Pixel[1021] = -3
 TX Pixel[1022] = -2
 TX Pixel[1023] = -1
-$stop called at time : 20265 ps : File "C:/Users/gurur/final/final.srcs/sources_1/new/tb_cnn_layer_6filters.sv" Line 132
+FC3 outputs:
+  out[0] = 0
+  out[1] = 0
+  out[2] = 0
+  out[3] = 0
+  out[4] = 0
+  out[5] = 0
+  out[6] = 0
+  out[7] = 0
+  out[8] = 0
+  out[9] = 111
+PRED CLASS = 9
+$stop called at time : 13635 ps : File "C:/Users/gurur/final_back/CNN/final.srcs/sources_1/new/tb_cnn_layer_6filters.sv" Line 152
