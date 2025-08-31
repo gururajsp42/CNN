@@ -70,8 +70,8 @@ module cnn_layer_6filters #(
     logic signed [15:0] pool1_out[0:5];
     logic signed [15:0] w00[0:15], w01[0:15], w10[0:15], w11[0:15]; 
     logic signed [15:0]  cout    [0:15];
-    logic [15:0] fc_inputs    [0:399];
-    logic signed [15:0]   max2_out[0:15];
+    logic signed [15:0] fc_inputs    [0:399];
+    logic  [15:0]   max2_out[0:15];
     
     logic signed [34:0]        output_ram [120];
   

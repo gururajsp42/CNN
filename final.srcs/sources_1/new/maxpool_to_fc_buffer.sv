@@ -12,7 +12,7 @@ module maxpool_to_fc_buffer #(
     input  logic          valid_in,  // all 16 are valid this cycle
 
     // Handshake with FC layer
-    output logic [DW-1:0] fc_in [0:TOTAL_IN-1],
+    output logic signed [DW-1:0] fc_in [0:TOTAL_IN-1],
     output logic          fc_valid,  // high when buffer full & ready for FC
     input  logic          fc_done    // pulse from FC when finished
 );

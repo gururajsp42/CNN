@@ -2,3 +2,6 @@ Running: xsim.dir/tb_cnn_layer_6filters_behav/xsimk.exe -simmode gui -wdb tb_cnn
 Design successfully loaded
 Design Loading Memory Usage: 11584 KB (Peak: 11584 KB)
 Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 13676 KB (Peak: 13676 KB)
+Simulation CPU Usage: 233 ms

@@ -25,4 +25,3 @@ Compiling module xil_defaultlib.argmax
 Compiling module xil_defaultlib.cnn_layer_6filters_default
 Compiling module xil_defaultlib.tb_cnn_layer_6filters
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot tb_cnn_layer_6filters_behav
